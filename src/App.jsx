@@ -5,6 +5,7 @@ import { MdOutlineAutoGraph } from "react-icons/md";
 import { MdOutlineDataSaverOn } from "react-icons/md";
 import { BsFillSpeakerFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
+import AdminPage from './components/adminPage';
 
 
 
@@ -14,7 +15,10 @@ import { FaUserCircle } from "react-icons/fa";
 function App() {
   
   return (
-    <div></div>
+    <div>
+      <AdminPage/>
+      
+       </div>
   )
 }
 
