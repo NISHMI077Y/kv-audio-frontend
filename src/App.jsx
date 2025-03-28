@@ -1,11 +1,12 @@
 
 import './App.css'
 import ProductCard from './components/productCard'
-import { MdOutlineAutoGraph } from "react-icons/md";
-import { MdOutlineDataSaverOn } from "react-icons/md";
-import { BsFillSpeakerFill } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
-import AdminPage from './components/adminPage';
+
+import AdminPage from './pages/admin/adminPage';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomePage from './pages/home/homePage';
+
+
 
 
 
@@ -15,10 +16,18 @@ import AdminPage from './components/adminPage';
 function App() {
   
   return (
-    <div>
-      <AdminPage/>
+    <BrowserRouter>
+   <Routes path= "/*">
+      <Route path="/admin" element={<AdminPage/>}/>
+      <Route path="/*" element={<HomePage/>}/>
       
-       </div>
+
+   
+   </Routes>
+      
+      
+       
+       </BrowserRouter>  
   )
 }
 
