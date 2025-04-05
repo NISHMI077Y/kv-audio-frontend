@@ -31,7 +31,7 @@ export default function LoginPage() {
             toast.success("Login Success");
 
             const user = res.data.user
-            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("token", res.data.token) //ceate table for token
 
 
 
