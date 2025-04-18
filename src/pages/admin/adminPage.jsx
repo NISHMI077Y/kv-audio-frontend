@@ -35,6 +35,7 @@ export default function AdminPage() {
           <Route path="/items" element={<AdminItemsPage/>}/>
           <Route path="/users" element={<h1>Users</h1>} />
           <Route path="/items/edit" element={<UpdateItemPage/>}/>
+
         </Routes>
         
       </div>

@@ -19,7 +19,7 @@ export default function LoginPage() {
         console.log(email, password);
 
 
-
+        
 
         axios.post("http://localhost:3000/api/users/login",
             {
