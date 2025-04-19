@@ -13,6 +13,7 @@ export default function AddItemPage() {
     const [productDimensions, setProductDimensions] = useState("");
     const [productDescription, setProductDescription] = useState("");
     const [productImages, setProductImages] = useState([]);
+
     const navigate = useNavigate();
 
     async function handleAddItem() {
@@ -23,7 +24,6 @@ export default function AddItemPage() {
             const promise = mediaUpload(productImages[i]);
             promises.push(promise)
         }
-
         
         console.log(
             productKey,
@@ -38,15 +38,10 @@ export default function AddItemPage() {
 
         if(token){
             try{
-                // Promise.all(promises).then((result)=>{
-                //     console.log(result)
-                // }).catch((err)=>{
-                //     toast.error(err)
-                // })
 
                 const imageUrls = await Promise.all(promises);
 
-                const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, {
+                const result = await axios.post(`http://localhost:3000/api/products`, {
                     key : productKey,
                     name : productName,
                     price : productPrice,
@@ -117,6 +112,7 @@ export default function AddItemPage() {
                     className="w-full mt-2 p-2 border rounded"
                 />
                 <input type="file" multiple onChange={(e) => { setProductImages(e.target.files) }} className="w-full mt-2 p-2 border rounded" />
+
                 <button onClick={handleAddItem} className="w-full p-2 border rounded bg-blue-500 text-white hover:bg-blue-700">Add</button>
                 <button onClick={() => { navigate("/admin/items") }} className="w-full p-2 border rounded bg-red-500 text-white hover:bg-red-700">Cancel</button>
             </div>
