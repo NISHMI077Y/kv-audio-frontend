@@ -1,6 +1,5 @@
 
 import { Link } from "react-router-dom";
-
  export default function ProductCard({ item }) {
    return (
      <div className="w-[300px] bg-white rounded-lg shadow-lg overflow-hidden m-4 relative">
@@ -14,7 +13,7 @@ import { Link } from "react-router-dom";
          <p className="text-gray-600 text-sm mt-2">{item.category}</p>
          <p className="text-gray-700 mt-4">{item.description}</p>
          <div className="flex justify-between items-center mt-4"> 
-           <span className="text-lg font-bold text-green-500">RS.{item.price}</span>
+           <span className="text-lg font-bold text-green-500">{item.price}</span>
            <span
              className={`px-3 py-1 text-sm rounded-full ${
                item.availability ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"

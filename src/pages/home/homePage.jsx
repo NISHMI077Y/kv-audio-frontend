@@ -6,6 +6,7 @@ import Items from "./items";
 import Home from "./home";
 import ErrorNotFound from "./error";
 import ProductOverView from "./productOverview";
+import BookingPage from "./bookingPage";
 
 export default function HomePage(){
     return(
@@ -22,6 +23,7 @@ export default function HomePage(){
                 <Route path="/product/:key" element={<ProductOverView/>}/>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/*" element={<ErrorNotFound/>}/>
+                <Route path="/booking" element={<BookingPage/>}/>
 
 
                 
