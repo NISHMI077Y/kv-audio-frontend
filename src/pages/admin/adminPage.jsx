@@ -6,8 +6,37 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, Route, Routes } from "react-router-dom";
 import AdminItemsPage from "./adminItems";
 import UpdateItemPage from "./updateItemPage";
+import AdminUsersPage from "./adminUsersPage";
+import AdminOrdersPage from "./adminBookingPage";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function AdminPage() {
+  const [UserValidated, setUserValidated] = useState(false);
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(!token){
+      window.location.href = "/login";
+    }
+    axios.get(`http://localhost:3000/api/users/`,{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    }).then((res)=>{
+      console.log(res.data);
+      const user = res.data;
+      if(user.role == "admin"){
+        setUserValidated(true);        
+      }else{
+        window.location.href = "/";
+      }
+      
+    }).catch((err)=>{
+      console.error(err);
+      setUserValidated(false);
+    })
+  },[])
+  
   return (
     <div className="w-full h-screen flex">
       {/* Sidebar */}
@@ -31,9 +60,9 @@ export default function AdminPage() {
         <Routes path="/*">
 
           <Route path="/dashboard" element={<h1>Dashboard</h1>} />
-          <Route path="/bookings" element={<h1>Bookings</h1>} />
+          <Route path="/bookings" element={<AdminOrdersPage/>} />
           <Route path="/items" element={<AdminItemsPage/>}/>
-          <Route path="/users" element={<h1>Users</h1>} />
+          <Route path="/users" element={<AdminUsersPage/>} />
           <Route path="/items/edit" element={<UpdateItemPage/>}/>
 
         </Routes>
