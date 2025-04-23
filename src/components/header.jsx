@@ -1,21 +1,59 @@
+import { useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import MobileNavPanel from "./mobileNavPanel";
+import { IoLogOut } from "react-icons/io5";
+
 
 export default function Header(){
-    return(
-        <header className="w-full h-[100px] shadow-xl flex justify-center items-center relative bg-accent "  >
-<img src= "/logo1.png" alt="logo" className="w-[100px] h-[100px] absolute left-2.5" />
-            <Link to="/" className="text-[25px] font-bold m-4">Home</Link>
-            <Link to="/contact" className="text-[25px] font-bold m-4">Contact</Link>
-            <Link to="/gallery" className="text-[25px] font-bold m-4">Gallery</Link>
-            {/* Items */}
-            <Link to="/items" className="text-[25px] font-bold m-4">Items</Link>
-            <Link to = "/booking" className="text-[25px] font-bold m-1 absolute right-25">
-            <FaCartShopping/>
-            </Link>
-            
+    const [navPanelOpen, setNavPanelOpen] = useState(false);
+    const token = localStorage.getItem("token");
 
+
+    return (
+        <header className="w-full  h-[70px] shadow-xl flex justify-center items-center relative bg-accent text-white">
+            <img
+                src="/logo1.png"
+                alt="logo"
+                className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full"
+            />
+            <div className="hidden w-[450px]  md:flex justify-evenly items-center">
+                <Link to="/" className="hidden md:block text-[22px]  m-1">
+                    Home
+                </Link>
+                <Link to="/contact" className="hidden md:block text-[22px]  m-1">
+                    contact
+                </Link>
+                <Link to="/gallery" className="hidden md:block text-[22px]  m-1">
+                    gallery
+                </Link>
+                {/* items */}
+                <Link to="/items" className="hidden md:block text-[22px]  m-1">
+                    Items
+                </Link>
+                <Link
+                    to="/booking"
+                    className="hidden md:block text-[22px] font-bold m-1 absolute right-24"
+                >
+                    <FaCartShopping />
+                </Link>
+            </div> 
+            <GiHamburgerMenu
+                className="absolute right-5 text-[24px] md:hidden"
+                onClick={() => {
+                    setNavPanelOpen(true);
+                }}
+            />
+ {token!=null&&<button className="hidden md:block absolute right-5 text-[24px]" onClick={()=>{
+        localStorage.removeItem("token")
+        window.location.href = "/login"
+      }}>
+ <IoLogOut className="mr-6 "/>
+
+      </button>}
+            <MobileNavPanel isOpen={navPanelOpen} setOpen={setNavPanelOpen} />
         </header>
-    )
+    );
      
-}
+} 

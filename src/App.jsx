@@ -12,6 +12,8 @@ import { Toaster } from 'react-hot-toast';
 import AddProductsPage from './pages/admin/addItemPage';
 import AddItemPage from './pages/admin/addItemPage';
 import RegisterPage from './pages/register/register';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import VerifyEmail from './pages/verifyEmail/verifyEmail';
 
 
 
@@ -23,7 +25,10 @@ import RegisterPage from './pages/register/register';
 
 function App() {
   
+
   return (
+
+    <GoogleOAuthProvider clientId="1053001966359-3tdebshnod2ooiuug8on00i4pc733dpt.apps.googleusercontent.com">
     <BrowserRouter>
           <Toaster position='top-right' /> 
 
@@ -36,6 +41,7 @@ function App() {
       <Route path="/*" element={<HomePage/>}/>
       <Route  path='/login' element= {<LoginPage/>}/>
       
+      <Route path= "verifyEmail" element= { <VerifyEmail/>}/>
 
       <Route path= "/register" element= { <RegisterPage/>}/>
       <Route path='/admin/items/add' element={<AddItemPage/>}/>
@@ -48,8 +54,9 @@ function App() {
       
       
        
-       </BrowserRouter>  
-  )
+       </BrowserRouter> 
+       </GoogleOAuthProvider> 
+  );
 }
 
 export default App
