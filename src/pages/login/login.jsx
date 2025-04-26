@@ -13,6 +13,8 @@ export default function LoginPage() {
     const navigate = useNavigate()
     const token = localStorage.getItem("token");
 
+
+
     
 
 
@@ -22,6 +24,8 @@ const googlelogin = useGoogleLogin(
   
     onSuccess : (res)=>{
         console.log(res)
+        const backendUrl = import.meta.env.VITE_BACKEND_URL
+
         axios.post(`http://localhost:3000/api/users/google`,{
           accessToken : res.access_token
         }).then((res)=>{
@@ -40,8 +44,6 @@ const googlelogin = useGoogleLogin(
       }
     }
   )
-
-
 
 
     function handleOnSubmit(e) {
