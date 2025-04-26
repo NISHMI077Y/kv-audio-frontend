@@ -16,7 +16,7 @@ export default function Header(){
             <img
                 src="/logo1.png"
                 alt="logo"
-                className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full"
+                className="w-[60px] h-[60px] object-cover border-[3px] absolute left-1 rounded-full m-[50px]"
             />
             <div className="hidden w-[450px]  md:flex justify-evenly items-center">
                 <Link to="/" className="hidden md:block text-[22px]  m-1">
