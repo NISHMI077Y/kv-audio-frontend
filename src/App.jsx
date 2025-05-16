@@ -28,7 +28,7 @@ function App() {
 
   return (
 
-    <GoogleOAuthProvider clientId="1053001966359-3tdebshnod2ooiuug8on00i4pc733dpt.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <BrowserRouter>
           <Toaster position='top-right' /> 
 
