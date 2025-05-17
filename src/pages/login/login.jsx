@@ -121,7 +121,7 @@ const googlelogin = useGoogleLogin(
 
                     <button className="my-8 w-[300px] h-[50px] bg-accent text-white rounded-lg cursor-pointer">Login</button>
 
-                    <button className="my-8 w-[300px] h-[50px] bg-accent text-white rounded-lg cursor-pointer" onClick={googlelogin}>Login With Google</button>
+                    <button className="my-8 w-[300px] h-[50px] bg-blue-800 text-white rounded-lg cursor-pointer" onClick={googlelogin}>Login With Google</button>
 
 
 
